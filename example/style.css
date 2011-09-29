@@ -1,0 +1,22 @@
+#content {
+  margin: 10px; }
+
+#sp-comments button {
+  margin: 3px; }
+#sp-comments textarea {
+  width: 100%;
+  min-height: 125px; }
+#sp-comments .body:hover {
+  background: #eeeeee; }
+#sp-comments .child {
+  margin-left: 15px; }
+#sp-comments .comment {
+  margin: 10px 0; }
+#sp-comments .collapse:hover {
+  background: #444444;
+  color: white;
+  cursor: pointer; }
+#sp-comments .action {
+  margin: 0 5px 0 0; }
+#sp-comments .meta {
+  margin-right: 5px; }

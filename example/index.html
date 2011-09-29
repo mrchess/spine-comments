@@ -1,0 +1,318 @@
+<script>
+function _StringFormatInline()
+{
+  var txt = this;
+  for(var i=0;i<arguments.length;i++)
+  {
+    var exp = new RegExp('\\{' + (i) + '\\}','gm');
+    txt = txt.replace(exp,arguments[i]);
+  }
+  return txt;
+}
+
+function _StringFormatStatic()
+{
+  for(var i=1;i<arguments.length;i++)
+  {
+    var exp = new RegExp('\\{' + (i-1) + '\\}','gm');
+    arguments[0] = arguments[0].replace(exp,arguments[i]);
+  }
+  return arguments[0];
+}
+
+if(!String.prototype.format)
+{
+  String.prototype.format = _StringFormatInline;
+}
+
+if(!String.format)
+{
+  String.format = _StringFormatStatic;
+}
+
+
+TESTDATA = [
+  {
+      creationDate: "2011-08-31T13:05:00",
+      creatorName: "Arch Stanton",
+      creatorLoginName: 'astanton',
+      commentTitle: "Comment Title 1",
+      commentContent: "To be or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take arms against a sea of troubles, And by opposing, end them.  To die, to sleep -- No more, and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to; 'tis a consummation Devoutly to be wish'd.  To die, to sleep -- To sleep, perchance to dream -- ay, there's the rub, For in that sleep of death what dreams may come, When we have shuffled off this mortal coil, Must give us pause; there's the respect That makes calamity of so long life: For who would bear the whips and scorns of time, Th'oppressor's wrong, the proud man's contumely The pangs of despis'd love, the law's delay, The insolence of office, and the spurns That patient merit of th'unworthy takes, With a bare bodkin; who would fardels bear, To grunt and sweat under a weary life, But that the dread of something after death, The undiscover'd country, from whose bourn No traveller returns, puzzles the will, And makes us rather bear those ills we have, Than fly to others that we know not of? Thus conscience does make cowards of us all, And thus the native hue of resolution Is sicklied o'er with the pale cast of thought, And enterprises of great pitch and moment With this regard their currents turn awry, And lose the name of action. --Soft you now, The fair Ophelia.  Nymph, in thy orisons Be all my sins rememb'red.",
+      commentId: "1",
+      cannotEdit: 'justin',
+      commentNumber: 0,
+      unread: true,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0
+  },
+  {
+      creationDate: "2011-08-31T13:06:00",
+      creatorName: "Tuco Benedicto Pacifico Juan Maria Ramirez",
+      creatorLoginName: 'tramirez',
+      commentTitle: "Comment Title 2",
+      commentContent: "Reply 1.1",
+      commentId: "2",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      replyTo: "1"
+  },
+  {
+      creationDate: "2011-08-31T13:07:00",
+      creatorName: "Angel Eyes",
+      creatorLoginName: 'angeleyes',
+      commentTitle: "Comment Title 1.2",
+      commentContent: "Reply 1.2",
+      commentId: "3",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      replyTo: "1"
+  },
+  {
+      creationDate: "2011-08-31T13:10:00",
+      creatorName: "Captain Jack",
+      commentTitle: "Comment Title 1.3",
+      commentContent: "Reply 1.3",
+      commentId: "4",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      replyTo: "1"
+  },
+  {
+      creationDate: "2011-08-31T13:11:00",
+      creatorName: "Arch Stanton",
+      creatorLoginName: 'astanton',
+      commentTitle: "Comment Title 2",
+      commentContent: "Comment 2",
+      commentId: "5",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0
+  },
+  {
+      creationDate: "2011-08-31T13:12:00",
+      creatorName: "Tuco Benedicto Pacifico Juan Maria Ramirez",
+      creatorLoginName: 'tramirez',
+      commentTitle: "Comment Title 2.1",
+      commentContent: "Reply 2.1",
+      commentId: "6",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "5"
+  },
+  {
+      creationDate: "2011-08-31T13:13:00",
+      creatorName: "Angel Eyes",
+      creatorLoginName: 'angeleyes',
+      commentTitle: "Comment Title 2.2",
+      commentContent: "Reply 2.2",
+      commentId: "7",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "5"
+  },
+  {
+      creationDate: "2011-08-31T13:14:00",
+      creatorName: "Captain Jack",
+      commentTitle: "Comment Title 2.3",
+      commentContent: "Reply 2.3",
+      commentId: "8",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "5"
+  },
+  {
+      creationDate: "2011-08-31T13:22:00",
+      creatorName: "Angel Eyes",
+      creatorLoginName: 'angeleyes',
+      commentTitle: "Comment Title 2.4",
+      commentContent: "Reply 2.4",
+      commentId: "9",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      replyTo: "5"
+  },
+  {
+      creationDate: "2011-08-31T13:23:00",
+      creatorName: "Arch Stanton",
+      creatorLoginName: 'astanton',
+      commentTitle: "Comment Title 2.4.1",
+      commentContent: "Reply 2.4.1",
+      commentId: "10",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      replyTo: "9"
+  },
+  {
+      creationDate: "2011-08-31T13:25:00",
+      creatorName: "Captain Jack",
+      commentTitle: "Comment Title 2.4.2",
+      commentContent: "Reply 2.4.2",
+      commentId: "11",
+      commentNumber: 0,
+      unread: true,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "9"
+  },
+  {
+      creationDate: "2011-08-31T13:35:00",
+      creatorName: "Arch Stanton",
+      creatorLoginName: 'astanton',
+      commentContent: "She should have died hereafter; There would have been a time for such a word, To-morrow, and to-morrow, and to-morrow, Creeps in this petty pace from day to day, In the last syllable of recorded time; And all our yesterdays have lighted fools The way to dusty death.  Out, out brief candle! Life's but a walking shadow, a poor player, That struts and frets his hour upon the stage, And then is heard no more; it is a tale Told by an idiot, full of sound and fury, Signifying nothing.",
+      commentId: "12",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0
+  },
+  {
+      creationDate: "2011-08-31T13:38:00",
+      creatorName: "Captain Jack",
+      commentTitle: "Comment Title 3.1",
+      commentContent: "Reply 3.1",
+      commentId: "13",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "12"
+  },
+  {
+      creationDate: "2011-08-31T13:42:00",
+      creatorName: "Angel Eyes",
+      creatorLoginName: 'angeleyes',
+      commentTitle: "Comment Title 3.2",
+      commentContent: "Reply 3.2",
+      unread : true,
+      commentId: "14",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "12"
+  },
+  {
+      creationDate: "2011-08-31T13:44:00",
+      creatorName: "Tuco Benedicto Pacifico Juan Maria Ramirez",
+      creatorLoginName: 'tramirez',
+      commentTitle: "Comment Title 3.3",
+      commentContent: "Reply 3.3",
+      commentId: "15",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "12"
+  },
+  {
+      creationDate: "2011-08-31T13:45:00",
+      creatorName: "Arch Stanton",
+      creatorLoginName: 'astanton',
+      commentTitle: "Comment Title 1.1.1",
+      commentContent: "Reply 1.1.1",
+      commentId: "16",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "2"
+  },
+  {
+      creationDate: "2011-08-31T14:45:00",
+      creatorName: "Tuco Benedicto Pacifico Juan Maria Ramirez",
+      creatorLoginName: 'tramirez',
+      commentTitle: "Comment Title 1.1.1.1",
+      commentContent: "Reply 1.1.1.1",
+      commentId: "17",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0,
+      replyTo: "16"
+  },
+  {
+      creationDate: "2011-08-31T14:47:00",
+      creatorName: "Tuco Benedicto Pacifico Juan Maria Ramirez",
+      creatorLoginName: 'tramirez',
+      commentTitle: "Comment Title 4",
+      commentContent: "I'm wanted in 14 counties for the following crimes:  arson, bigamy, fraud, larceny, murder, theft, receiving stolen goods and selling stolen goods",
+      commentId: "18",
+      commentNumber: 0,
+      commentColor: null,
+      pageNumber: 0,
+      pageHeight: 0,
+      pageWidth: 0,
+      xPos: 0,
+      yPos: 0
+  }]    
+</script>
+<script src="jquery-1.6.4.min.js"></script>
+<script src="spine.min.js"></script>
+<script src="../src/comments.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<body>
+  <div id="content">
+        <h1>Spine Comments</h1>
+        <div id="sp-comments"></div>
+  </div>
+</body>
